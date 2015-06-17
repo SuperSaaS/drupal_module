@@ -1,6 +1,6 @@
-# SuperSaaS Online Appointment Scheduling -- Drupal Module
+# SuperSaaS Online Appointment Scheduling -- Drupal 7 Module
 
-The SuperSaaS Drupal module displays a "Book now" button that automatically logs the user into a SuperSaaS schedule using his Drupal user name. It passes the user's information along, creating or updating the user's information on SuperSaaS as needed.
+The SuperSaaS Drupal 7 module displays a "Book now" button that automatically logs the user into a SuperSaaS schedule using his Drupal user name. It passes the user's information along, creating or updating the user's information on SuperSaaS as needed.
 
 Note that you will need to configure both the WordPress plugin *and* your SuperSaaS account. Please read the setup instructions at:
 
