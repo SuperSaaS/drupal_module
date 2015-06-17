@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the supersaas module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function supersaas_uninstall() {
+  variable_del('supersaas_account_id');
+  variable_del('supersaas_password');
+  variable_del('supersaas_schedule');
+  variable_del('supersaas_button_label');
+  variable_del('supersaas_button_image');
+  variable_del('supersaas_domain');
+}
