@@ -47,8 +47,8 @@ msgstr "Password SuperSaaS"
 msgid "The password for the administrator of your SuperSaaS account."
 msgstr "La password amministrativa del tuo account SuperSaaS"
 
-msgid "Schedule name or URL"
-msgstr "Nome o URL del calendario prenotazioni"
+msgid "Schedule name"
+msgstr "Nome del calendario prenotazioni"
 
 msgid "The name of the schedule or URL to redirect to after login."
 msgstr "Il nome del calendario prenotazioni o l'URL a cui indirizzare l'utente dopo il login"
@@ -78,5 +78,5 @@ msgid "Please enter the URL including 'http'"
 msgstr ""
 
 msgid "Your username is a supersaas reserved word. You might not be able to login. Do you want to continue?"
-msgstr "Your username is a supersaas reserved word. You might not be able to login. Do you want to continue?"
+msgstr ""
 

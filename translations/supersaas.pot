@@ -47,7 +47,7 @@ msgstr ""
 msgid "The password for the administrator of your SuperSaaS account."
 msgstr ""
 
-msgid "Schedule name or URL"
+msgid "Schedule name"
 msgstr ""
 
 msgid "The name of the schedule or URL to redirect to after login."
@@ -78,5 +78,5 @@ msgid "Please enter the URL including 'http'"
 msgstr ""
 
 msgid "Your username is a supersaas reserved word. You might not be able to login. Do you want to continue?"
-msgstr "Použité uživatelské jméno je zabrané pro supersaas. Nebude možné se s ním přihlásit. Chcete pokračovat?"
+msgstr ""
 

@@ -30,10 +30,10 @@ function supersaas_admin() {
 
   $form['supersaas_schedule'] = array(
     '#type' => 'textfield',
-    '#title' => t('Schedule name or URL'),
+    '#title' => t('Schedule name'),
     '#default_value' => variable_get('supersaas_schedule', ''),
     '#description' => t("The name of the schedule or URL to redirect to after login."),
-    '#required' => TRUE,
+    '#required' => FALSE,
   );
 
   $form['supersaas_button_label'] = array(
@@ -41,7 +41,7 @@ function supersaas_admin() {
     '#title' => t('Button Label'),
     '#default_value' => variable_get('supersaas_button_label', t('Book Now!')),
     '#description' => t("The text to be put on the button that is displayed, for example 'Create Appointment'."),
-    '#required' => TRUE,
+    '#required' => FALSE,
   );
 
   $form['supersaas_button_image'] = array(
