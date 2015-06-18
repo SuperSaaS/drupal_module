@@ -48,7 +48,7 @@ msgid "The password for the administrator of your SuperSaaS account."
 msgstr "Heslo k Vašemu administrátorskému ůčtu v SuperSaaS"
 
 msgid "Schedule name"
-msgstr "URL vašeho rozvrhu"
+msgstr "Jméno Vašeho rozvrhu"
 
 msgid "The name of the schedule or URL to redirect to after login."
 msgstr "Jméno Vašeho rozvrhu nebo jeho celé URL"

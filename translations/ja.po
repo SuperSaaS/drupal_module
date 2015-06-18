@@ -48,7 +48,7 @@ msgid "The password for the administrator of your SuperSaaS account."
 msgstr "SuperSaaS管理者用アカウント"
 
 msgid "Schedule name"
-msgstr "スケジュール名もしくはURL"
+msgstr "スケジュール名"
 
 msgid "The name of the schedule or URL to redirect to after login."
 msgstr "ログイン後にリダイレクトするスケジュール名もしくはURL"
