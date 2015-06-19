@@ -1,0 +1,4 @@
+name = SuperSaaS Login
+description = "This module displays a 'Book now' button that automatically logs the user into a SuperSaaS schedule using his Drupal user name."
+core = 7.x
+configure = admin/config/content/supersaas
