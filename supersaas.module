@@ -72,12 +72,14 @@ function supersaas_block_view($delta = '') {
         $out .= '<input type="submit" value="' . htmlspecialchars($label) . '" onclick="return confirmBooking()"/>';
       }
 
-      $out .= '</form><script type="text/javascript">function confirmBooking() {';
-      $out .= "var reservedWords = ['test','supervise','supervisor','superuser','user','admin','supersaas'];";
-      $out .= "for (i = 0; i < reservedWords.length; i++) {if (reservedWords[i] === '{$user->name}') {return confirm('";
-      $out .= t('Your username is a supersaas reserved word. You might not be able to login. Do you want to continue?') . "');}}}</script>";
-
       $block['content'] = $out . '</form>';
+
+      $script = 'function confirmBooking() {';
+      $script .= "var reservedWords = ['test','supervise','supervisor','superuser','user','admin','supersaas'];";
+      $script .= "for (i = 0; i < reservedWords.length; i++) {if (reservedWords[i] === '{$user->name}') {return confirm('";
+      $script .= t('Your username is a supersaas reserved word. You might not be able to login. Do you want to continue?') . "');}}}";
+
+      drupal_add_js($script, 'inline');
     }
     else {
       $block['content'] = t('(Setup incomplete)');
