@@ -9,7 +9,6 @@
  * Implements hook_help().
  */
 function supersaas_help($path, $arg) {
-  // error_log('rada');
   switch ($path) {
     case 'admin/help#supersaas':
       $output = '<h3>' . t('About') . '</h3>';
@@ -22,7 +21,6 @@ function supersaas_help($path, $arg) {
  * Implements hook_permission().
  */
 function supersaas_permission() {
-  error_log('papa');
   return array(
     'administer supersaas' => array(
       'title' => t('Administer SuperSaaS'),
