@@ -114,7 +114,10 @@ function supersaas_login($node, &$form_state) {
       }
 
       $form['#attached']['js'] = array(
-        implode(DIRECTORY_SEPARATOR, array(drupal_get_path('module', 'supersaas'), 'js', 'supersaas.js')) => array(
+        implode(
+          DIRECTORY_SEPARATOR,
+          array(drupal_get_path('module', 'supersaas'), 'js', 'supersaas.js'))
+        => array(
           'type' => 'file',
         ),
       );
@@ -123,7 +126,7 @@ function supersaas_login($node, &$form_state) {
         'data' => array(
           'supersaas' => array(
             'username' => $user->name,
-            'confirmMessage' =>  t('Your username is a supersaas reserved word. You might not be able to login. Do you want to continue?'),
+            'confirmMessage' => t('Your username is a supersaas reserved word. You might not be able to login. Do you want to continue?'),
           ),
         ),
         'type' => 'setting',
@@ -137,7 +140,7 @@ function supersaas_login($node, &$form_state) {
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function supersaas_form_supersaas_login_alter(&$form, $form_state, $form_id) {
+function supersaas_form_supersaas_login_alter(&$form, $form_state, $form_id)  {
   unset($form['form_id']);
   unset($form['form_build_id']);
   unset($form['form_token']);
