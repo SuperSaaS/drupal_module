@@ -55,8 +55,8 @@ function supersaas_block_view($delta = '') {
 }
 
 /**
-* Implements hook_form().
-*/
+ * Implements hook_form().
+ */
 function supersaas_login($node, &$form_state) {
   global $user;
   $form = array();
@@ -74,7 +74,7 @@ function supersaas_login($node, &$form_state) {
 
       $form['account'] = array(
         '#type' => 'hidden',
-        '#value' => $account
+        '#value' => $account,
       );
 
       $form['id'] = array(
@@ -104,17 +104,18 @@ function supersaas_login($node, &$form_state) {
 
       if ($image) {
         $form['submit'] = array(
-          '#markup' =>  '<input type="image" src="' . $image . '" alt="' . htmlspecialchars($label) . '" name="submit" onclick="return confirmBooking()"/>'
+          '#markup' => '<input type="image" src="' . $image . '" alt="' . htmlspecialchars($label) . '" name="submit" onclick="return confirmBooking()"/>',
         );
-      } else {
+      }
+      else {
         $form['submit'] = array(
-          '#markup' =>  '<input type="submit" value="' . htmlspecialchars($label) . '" onclick="return confirmBooking()"/>'
+          '#markup' => '<input type="submit" value="' . htmlspecialchars($label) . '" onclick="return confirmBooking()"/>',
         );
       }
 
       $form['#attached']['js'] = array(
         implode(DIRECTORY_SEPARATOR, array(drupal_get_path('module', 'supersaas'), 'js', 'supersaas.js')) => array(
-        'type' => 'file',
+          'type' => 'file',
         ),
       );
 
@@ -122,8 +123,8 @@ function supersaas_login($node, &$form_state) {
         'data' => array(
           'supersaas' => array(
             'username' => $user->name,
-            'confirmMessage' =>  t('Your username is a supersaas reserved word. You might not be able to login. Do you want to continue?')
-          )
+            'confirmMessage' =>  t('Your username is a supersaas reserved word. You might not be able to login. Do you want to continue?'),
+          ),
         ),
         'type' => 'setting',
       );
@@ -136,7 +137,7 @@ function supersaas_login($node, &$form_state) {
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function supersaas_form_supersaas_login_alter(&$form, $form_state, $form_id)  {
+function supersaas_form_supersaas_login_alter(&$form, $form_state, $form_id) {
   unset($form['form_id']);
   unset($form['form_build_id']);
   unset($form['form_token']);
