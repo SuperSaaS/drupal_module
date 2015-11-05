@@ -44,11 +44,13 @@ function supersaas_block_info() {
  */
 function supersaas_block_view($delta = '') {
   $block = array();
-  $block['subject'] = t('SuperSaaS Login');
-  $block['content'] = drupal_get_form('supersaas_login');
+  if (user_is_logged_in()) {
+    $block['subject'] = t('SuperSaaS Login');
+    $block['content'] = drupal_get_form('supersaas_login');
 
-  if (!isset($block['content']['account'])) {
-    $block['content'] = t('(Setup incomplete)');
+    if (!isset($block['content']['account'])) {
+      $block['content'] = t('(Setup incomplete)');
+    }
   }
 
   return $block;
@@ -60,7 +62,7 @@ function supersaas_block_view($delta = '') {
 function supersaas_login($node, &$form_state) {
   global $user;
   $form = array();
-  if (!$user->uid) {
+  if (user_is_logged_in()) {
     $account = variable_get("supersaas_account_id", '');
     $password = variable_get("supersaas_password", '');
     $after = variable_get('supersaas_schedule', '');
