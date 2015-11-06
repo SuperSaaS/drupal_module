@@ -9,7 +9,6 @@
  * Implements hook_help().
  */
 function supersaas_help($path, $arg) {
-  // error_log('rada');
   switch ($path) {
     case 'admin/help#supersaas':
       $output = '<h3>' . t('About') . '</h3>';
@@ -22,7 +21,6 @@ function supersaas_help($path, $arg) {
  * Implements hook_permission().
  */
 function supersaas_permission() {
-  error_log('papa');
   return array(
     'administer supersaas' => array(
       'title' => t('Administer SuperSaaS'),
@@ -43,13 +41,28 @@ function supersaas_block_info() {
 
 /**
  * Implements hook_block_view().
- *
- * Generates the SuperSaaS login button.
  */
 function supersaas_block_view($delta = '') {
-  global $user;
-  if ($user->uid) {
+  $block = array();
+  if (user_is_logged_in()) {
     $block['subject'] = t('SuperSaaS Login');
+    $block['content'] = drupal_get_form('supersaas_login');
+
+    if (!isset($block['content']['account'])) {
+      $block['content'] = t('(Setup incomplete)');
+    }
+  }
+
+  return $block;
+}
+
+/**
+ * Implements hook_form().
+ */
+function supersaas_login($node, &$form_state) {
+  global $user;
+  $form = array();
+  if (user_is_logged_in()) {
     $account = variable_get("supersaas_account_id", '');
     $password = variable_get("supersaas_password", '');
     $after = variable_get('supersaas_schedule', '');
@@ -58,33 +71,81 @@ function supersaas_block_view($delta = '') {
       $label = variable_get('supersaas_button_label', t('Book Now!'));
       $domain = variable_get('supersaas_domain', '');
       $account = str_replace(' ', '_', $account);
-      $out = '<form method="post" action="http://' . ($domain ? $domain : t('www.supersaas.com')) . '/api/users">';
-      $out .= '<input type="hidden" name="account" value="' . $account . '"/>';
-      $out .= '<input type="hidden" name="id" value="' . $user->uid . 'fk"/>';
-      $out .= '<input type="hidden" name="user[name]" value="' . htmlspecialchars($user->name) . '"/>';
-      $out .= '<input type="hidden" name="user[email]" value="' . htmlspecialchars($user->mail) . '"/>';
-      $out .= '<input type="hidden" name="checksum" value="' . md5("$account$password$user->name") . '"/>';
-      $out .= '<input type="hidden" name="after" value="' . htmlspecialchars(str_replace(' ', '_', $after)) . '"/>';
+
+      $form['#action'] = 'http://' . ($domain ? $domain : t('www.supersaas.com')) . '/api/users';
+
+      $form['account'] = array(
+        '#type' => 'hidden',
+        '#value' => $account,
+      );
+
+      $form['id'] = array(
+        '#type' => 'hidden',
+        '#value' => "{$user->uid}fk",
+      );
+
+      $form['user[name]'] = array(
+        '#type' => 'hidden',
+        '#value' => htmlspecialchars($user->name),
+      );
+
+      $form['user[email]'] = array(
+        '#type' => 'hidden',
+        '#value' => htmlspecialchars($user->mail),
+      );
+
+      $form['checksum'] = array(
+        '#type' => 'hidden',
+        '#value' => md5("$account$password$user->name"),
+      );
+
+      $form['after'] = array(
+        '#type' => 'hidden',
+        '#value' => htmlspecialchars(str_replace(' ', '_', $after)),
+      );
+
       if ($image) {
-        $out .= '<input type="image" src="' . $image . '" alt="' . htmlspecialchars($label) . '" name="submit" onclick="return confirmBooking()"/>';
+        $form['submit'] = array(
+          '#markup' => '<input type="image" src="' . $image . '" alt="' . htmlspecialchars($label) . '" name="submit" onclick="return confirmBooking()"/>',
+        );
       }
       else {
-        $out .= '<input type="submit" value="' . htmlspecialchars($label) . '" onclick="return confirmBooking()"/>';
+        $form['submit'] = array(
+          '#markup' => '<input type="submit" value="' . htmlspecialchars($label) . '" onclick="return confirmBooking()"/>',
+        );
       }
 
-      $out .= '</form><script type="text/javascript">function confirmBooking() {';
-      $out .= "var reservedWords = ['test','supervise','supervisor','superuser','user','admin','supersaas'];";
-      $out .= "for (i = 0; i < reservedWords.length; i++) {if (reservedWords[i] === '{$user->name}') {return confirm('";
-      $out .= t('Your username is a supersaas reserved word. You might not be able to login. Do you want to continue?') . "');}}}</script>";
+      $form['#attached']['js'] = array(
+        implode(
+          DIRECTORY_SEPARATOR,
+          array(drupal_get_path('module', 'supersaas'), 'js', 'supersaas.js'))
+        => array(
+          'type' => 'file',
+        ),
+      );
 
-      $block['content'] = $out . '</form>';
+      $form['#attached']['js'][] = array(
+        'data' => array(
+          'supersaas' => array(
+            'username' => $user->name,
+            'confirmMessage' => t('Your username is a supersaas reserved word. You might not be able to login. Do you want to continue?'),
+          ),
+        ),
+        'type' => 'setting',
+      );
     }
-    else {
-      $block['content'] = t('(Setup incomplete)');
-    }
-
-    return $block;
   }
+
+  return $form;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function supersaas_form_supersaas_login_alter(&$form, $form_state, $form_id) {
+  unset($form['form_id']);
+  unset($form['form_build_id']);
+  unset($form['form_token']);
 }
 
 /**
