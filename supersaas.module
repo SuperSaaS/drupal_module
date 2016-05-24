@@ -5,162 +5,18 @@
  * Used to integrate the SuperSaaS appointment scheduling.
  */
 
+use Drupal\Core\Routing\RouteMatchInterface;
+
 /**
  * Implements hook_help().
  */
-function supersaas_help($path, $arg) {
-  switch ($path) {
-    case 'admin/help#supersaas':
-      $output = '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t("This module displays a 'Book now' button that automatically logs the user into a SuperSaaS schedule using his Drupal user name. It passes the user's information along, creating or updating the user's information on SuperSaaS as needed.") . '</p>';
+function supersaas_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.supersaas':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t("This module displays a 'Book now' button that automatically logs the user into a SuperSaaS schedule using his Drupal user name. It passes the user's information along, creating or updating the user's information on SuperSaaS as needed. This saves users from having to log in twice.") . '</p>';
+      $output .= '<p>' . t('For more details visit: <a href=":supersaas_spec">SuperSaaS Support', array(':supersaas_spec' => 'http://www.supersaas.com/info/doc/integration/drupal_integration')) . '</p>';
       return $output;
   }
-}
-
-/**
- * Implements hook_permission().
- */
-function supersaas_permission() {
-  return array(
-    'administer supersaas' => array(
-      'title' => t('Administer SuperSaaS'),
-    ),
-  );
-}
-
-/**
- * Implements hook_block_info().
- */
-function supersaas_block_info() {
-  $blocks['login_button'] = array(
-    'info' => t('SuperSaaS Login'),
-  );
-
-  return $blocks;
-}
-
-/**
- * Implements hook_block_view().
- */
-function supersaas_block_view($delta = '') {
-  $block = array();
-  if (user_is_logged_in()) {
-    $block['subject'] = t('SuperSaaS Login');
-    $block['content'] = drupal_get_form('supersaas_login');
-
-    if (!isset($block['content']['account'])) {
-      $block['content'] = t('(Setup incomplete)');
-    }
-  }
-
-  return $block;
-}
-
-/**
- * Implements hook_form().
- */
-function supersaas_login($node, &$form_state) {
-  global $user;
-  $form = array();
-  if (user_is_logged_in()) {
-    $account = variable_get("supersaas_account_id", '');
-    $password = variable_get("supersaas_password", '');
-    $after = variable_get('supersaas_schedule', '');
-    if ($account && $password && $after) {
-      $image = variable_get('supersaas_button_image', '');
-      $label = variable_get('supersaas_button_label', t('Book Now!'));
-      $domain = variable_get('supersaas_domain', '');
-      $account = str_replace(' ', '_', $account);
-
-      $form['#action'] = 'http://' . ($domain ? $domain : t('www.supersaas.com')) . '/api/users';
-
-      $form['account'] = array(
-        '#type' => 'hidden',
-        '#value' => $account,
-      );
-
-      $form['id'] = array(
-        '#type' => 'hidden',
-        '#value' => "{$user->uid}fk",
-      );
-
-      $form['user[name]'] = array(
-        '#type' => 'hidden',
-        '#value' => htmlspecialchars($user->name),
-      );
-
-      $form['user[email]'] = array(
-        '#type' => 'hidden',
-        '#value' => htmlspecialchars($user->mail),
-      );
-
-      $form['checksum'] = array(
-        '#type' => 'hidden',
-        '#value' => md5("$account$password$user->name"),
-      );
-
-      $form['after'] = array(
-        '#type' => 'hidden',
-        '#value' => htmlspecialchars(str_replace(' ', '_', $after)),
-      );
-
-      if ($image) {
-        $form['submit'] = array(
-          '#markup' => '<input type="image" src="' . $image . '" alt="' . htmlspecialchars($label) . '" name="submit" onclick="return confirmBooking()"/>',
-        );
-      }
-      else {
-        $form['submit'] = array(
-          '#markup' => '<input type="submit" value="' . htmlspecialchars($label) . '" onclick="return confirmBooking()"/>',
-        );
-      }
-
-      $form['#attached']['js'] = array(
-        implode(
-          DIRECTORY_SEPARATOR,
-          array(drupal_get_path('module', 'supersaas'), 'js', 'supersaas.js'))
-        => array(
-          'type' => 'file',
-        ),
-      );
-
-      $form['#attached']['js'][] = array(
-        'data' => array(
-          'supersaas' => array(
-            'username' => $user->name,
-            'confirmMessage' => t('Your username is a supersaas reserved word. You might not be able to login. Do you want to continue?'),
-          ),
-        ),
-        'type' => 'setting',
-      );
-    }
-  }
-
-  return $form;
-}
-
-/**
- * Implements hook_form_FORM_ID_alter().
- */
-function supersaas_form_supersaas_login_alter(&$form, $form_state, $form_id) {
-  unset($form['form_id']);
-  unset($form['form_build_id']);
-  unset($form['form_token']);
-}
-
-/**
- * Implements hook_menu().
- */
-function supersaas_menu() {
-  $items['admin/config/content/supersaas'] = array(
-    'title' => 'SuperSaaS Settings',
-    'description' => "Settings for the 'Book now' button that automatically logs the user into a SuperSaaS schedule.",
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('supersaas_admin'),
-    'access arguments' => array('administer supersaas'),
-    'type' => MENU_NORMAL_ITEM,
-    'file' => 'supersaas.admin.inc',
-  );
-
-  return $items;
 }

@@ -1,0 +1,6 @@
+supersaas:
+  version: VERSION
+  js:
+    supersaas.js: {}
+  dependencies:
+    - core/drupal

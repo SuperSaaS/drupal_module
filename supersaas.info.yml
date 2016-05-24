@@ -1,0 +1,8 @@
+type: module
+name: SuperSaaS Login
+description: 'This module displays a "Book now" button that automatically logs the user into a SuperSaaS schedule using his/her Drupal user name'
+package: Scheduling
+configure: supersaas.admin_settings_form
+dependencies:
+ - user
+core: '8.x'

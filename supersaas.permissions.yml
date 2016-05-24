@@ -1,0 +1,3 @@
+administer supersaas settings:
+  title: 'Administer SuperSaaS'
+  restrict access: true

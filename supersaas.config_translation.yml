@@ -1,0 +1,5 @@
+supersaas.admin_settings_form:
+  title: 'SuperSaaS Settings'
+  base_route_name: supersaas.admin_settings_form
+  names:
+    - supersaas.settings

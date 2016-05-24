@@ -26,13 +26,16 @@ saves users from having to log in twice.
 
 REQUIREMENTS
 ------------
-The only requirement for this module is Drupal 7.
+The only requirement for this module is Drupal 8.1.1.
 
 INSTALLATION
 ------------
  * Install as you would normally install a contributed Drupal module. See:
-   https://drupal.org/documentation/install/modules-themes/modules-7
+   https://drupal.org/documentation/install/modules-themes/modules-8
    for further information.
+ * You will need to configure your SuperSaaS account. See:
+  https://www.supersaas.com/info/doc/integration/drupal_integration
+  for further information.
 
 CONFIGURATION
 -------------
@@ -87,13 +90,9 @@ FAQ
 ----------------
 Q: I have difficulties getting it work (or where can I report an issue regarding
 the module)?
-A: You can write a mail to jmfaber@supersaas.com describing your problem.
+A: You can write a mail to support@supersaas.com describing your problem.
 
 Q: How can I find out more about SuperSaaS?
 A: You can visit the http://www.supersaas.com/info/features page to check out
 the features offered by SuperSaaS. We always recommend to try out our system
 first by signing up with a free account.
-
-MAINTAINERS
------------
-* supersaas (jmfaber@supersaas.com)
