@@ -1,0 +1,8 @@
+account_id: 'my supersaas account name'
+password: 'my supersaas password'
+schedule: 'my supersaas schedule'
+button_label: 'Book Now!'
+button_image: 'http://cdn.supersaas.net/en/but/booknow_red.png'
+domain: ''
+https: false
+langcode: 'en'

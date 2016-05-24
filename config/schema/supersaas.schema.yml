@@ -1,0 +1,27 @@
+# Schema for the configuration files of the SuperSaaS module.
+
+user.settings:
+  type: config_object
+  label: 'Supersaas settings'
+  mapping:
+    account_id:
+      type: string
+      label: 'SuperSaaS Account Name'
+    password:
+      type: string
+      label: 'SuperSaaS Password'
+    schedule:
+      type: string
+      label: 'Schedule Name'
+    button_label:
+      type: string
+      label: 'Button Label'
+    button_image:
+      type: uri
+      label: 'Button Image'
+    domain:
+      type: string
+      label: 'Custom Domain Name'
+    https:
+      type: boolean
+      label: 'Enable HTTPS'

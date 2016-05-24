@@ -1,0 +1,6 @@
+supersaas.admin_settings_form:
+  title: 'SuperSaaS Settings'
+  parent: system.admin_config_content
+  description: 'Settings for the "Book now" button that automatically logs the user into a SuperSaaS schedule'
+  weight: 20
+  route_name: supersaas.admin_settings_form
