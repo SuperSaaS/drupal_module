@@ -36,6 +36,9 @@ INSTALLATION
  * You will need to configure your SuperSaaS account. See:
   https://www.supersaas.com/info/doc/integration/drupal_integration
   for further information.
+ * For language files, they are bundled under /trnaslation, you will
+  need to upload them manually /admin/config/regional/translate/import, then
+  choose 'Treat imported strings as custom translations'.
 
 CONFIGURATION
 -------------
