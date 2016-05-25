@@ -65,7 +65,7 @@ class SupersaasLoginForm extends FormBase {
     $account = str_replace(' ', '_', $config->get('account_id'));
 
     $protocol = 'http' . ($config->get('https') ? 's' : '') . '://';
-    $domain = empty($config->get('domain')) ? 'supersaas.com' : $config->get('domain');
+    $domain = $config->get('domain') === '' ? 'supersaas.com' : $config->get('domain');
     $form['#action'] = $protocol . $domain . '/api/users';
     $form['#method'] = 'post';
 
