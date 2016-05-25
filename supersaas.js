@@ -19,13 +19,13 @@
         return;
       }
 
-      submit.onclick = function() {
+      submit.onclick = function () {
         for (var i in reservedWords) {
           if (reservedWords[i] === settings.username) {
             return window.confirm(settings.confirmMessage);
           }
         }
-      }
+      };
     }
-  }
+  };
 })(window.Drupal);
