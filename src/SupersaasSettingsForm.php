@@ -63,10 +63,10 @@ class SupersaasSettingsForm extends ConfigFormBase {
     );
 
     $form['password'] = array(
-      '#type' => 'password',
-      '#title' => $this->t('SuperSaaS Password'),
+      '#type' => 'textfield',
+      '#title' => $this->t('SuperSaaS API Key'),
       '#default_value' => $config->get('password', ''),
-      '#description' => $this->t('The password for the administrator of your SuperSaaS account.'),
+      '#description' => $this->t('The API key that you generated from your SuperSaaS account.'),
       '#required' => TRUE,
     );
 
