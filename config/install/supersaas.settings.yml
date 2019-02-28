@@ -1,5 +1,5 @@
 account_id: 'my supersaas account name'
-password: 'my supersaas password'
+password: 'my supersaas api key'
 schedule: 'my supersaas schedule'
 button_label: 'Book Now!'
 button_image: 'http://cdn.supersaas.net/en/but/booknow_red.png'

@@ -48,8 +48,7 @@ and then click the *Save Configuration* button at the bottom
 are Configuration » Content authoring*:
   - SuperSaaS account name - This is the name of your SuperSaaS account
   (not your email address)
-  - SuperSaaS password - This is the password that the administrator uses to log
-  in to SuperSaaS
+  - SuperSaaS API Key - This is the API key that you generated from your SuperSaaS account
   - Schedule name or URL - You can either put the name of a schedule or you can
   provide a full URL if you want to add specific parameters to direct
   the user to a specific view
