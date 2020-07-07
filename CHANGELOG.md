@@ -1,3 +1,9 @@
+Drupal 9, 2020-07-07
+------------------------
+- Initial Support for Drupal 9
+- Module works in both drupal 8 and 9
+
+
 API key, 2019-02-28
 -------------------
 - The module switched from using passwords to API keys. Passwords will continue

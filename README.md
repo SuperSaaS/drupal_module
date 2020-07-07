@@ -10,7 +10,6 @@ CONTENTS OF THIS FILE
  * Configuration
  * Troubleshooting
  * FAQ
- * Maintainers
 
 
 INTRODUCTION
@@ -29,7 +28,7 @@ saves users from having to log in twice.
 REQUIREMENTS
 ------------
 
-The only requirement for this module is Drupal 8.1.1.
+The only requirement for this module is Drupal 8 or 9.
 
 
 INSTALLATION
