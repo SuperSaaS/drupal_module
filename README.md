@@ -1,5 +1,5 @@
 SuperSaaS Online Appointment Scheduling Integration
----------------------------------------------------------
+---------------------------------------------------
 
 CONTENTS OF THIS FILE
 ---------------------
@@ -86,7 +86,7 @@ CONFIGURATION
 TROUBLESHOOTING
 ---------------
  * Please read the full set up guide here:
-   http://www.supersaas.com/info/doc/integration/drupal_integration
+   https://www.supersaas.com/info/doc/integration/drupal_integration
 * Troubleshooting Tips:
   - Note that the button only appears to users who are logged in to your Drupal
     site.
@@ -104,6 +104,6 @@ the module)?
 A: You can write a mail to support@supersaas.com describing your problem.
 
 Q: How can I find out more about SuperSaaS?
-A: You can visit the http://www.supersaas.com/info/features page to check out
+A: You can visit the https://www.supersaas.com/info/features page to check out
 the features offered by SuperSaaS. We always recommend to try out our system
 first by signing up with a free account.
