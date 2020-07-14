@@ -1,7 +1,7 @@
 {
     "name": "drupal/supersaas",
-    "description": "SuperSaaS Online Appointment Scheduling. This is a Drupal 8 module for SSO integeration",
-    "type": "drupal-core",
+    "description": "SuperSaaS Online Appointment Scheduling. This is a Drupal 8 or 9 module for SSO integration.",
+    "type": "drupal-module",
     "license": "GPL-2.0+",
     "require": {
         "php": ">=5.5.9"
