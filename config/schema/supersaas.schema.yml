@@ -9,7 +9,7 @@ user.settings:
       label: 'SuperSaaS Account Name'
     password:
       type: string
-      label: 'SuperSaaS Password'
+      label: 'SuperSaaS API key'
     schedule:
       type: string
       label: 'Schedule Name'

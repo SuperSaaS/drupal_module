@@ -2,7 +2,7 @@ name: SuperSaaS Login
 description: 'This module displays a "Book now" button that automatically logs the user into a SuperSaaS schedule using their Drupal user name.'
 package: Scheduling
 type: module
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^8 || ^9 || ^10
 configure: supersaas.admin_settings_form
 
 dependencies:

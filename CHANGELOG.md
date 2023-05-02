@@ -1,3 +1,10 @@
+Drupal 10, 2023-05-02
+------------------------
+- Initial Support for Drupal 10
+- Module works in Drupal 8, 9 and 10
+- Added Swedish translation
+
+
 Drupal 9, 2020-07-07
 ------------------------
 - Initial Support for Drupal 9
