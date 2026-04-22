@@ -1,6 +1,6 @@
 # Schema for the configuration files of the SuperSaaS module.
 
-user.settings:
+supersaas.settings:
   type: config_object
   label: 'Supersaas settings'
   mapping:

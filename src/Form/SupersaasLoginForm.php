@@ -123,10 +123,12 @@ class SupersaasLoginForm extends FormBase {
 
     // Javascript pre-submit validation.
     $form['#attached']['library'] = ['supersaas/supersaas'];
-    $form['#attached']['drupalSettings'] = array(
-      'username' => $this->user->getAccountName(),
-      'confirmMessage' => $this->t('Your username is a supersaas reserved word. You might not be able to login. Do you want to continue?'),
-    );
+    $form['#attached']['drupalSettings'] = [
+      'supersaas' => [
+        'username' => $this->user->getAccountName(),
+        'confirmMessage' => $this->t('Your username is a supersaas reserved word. You might not be able to login. Do you want to continue?'),
+      ],
+    ];
 
     $this->renderer->addCacheableDependency($form, $config);
 

@@ -47,9 +47,9 @@ INSTALLATION
 CONFIGURATION
 -------------
 
-    1. Navigate to *Administer » Modules*. Check the *Enabled* box next to the
-       module and then select the *Save Configuration* button at the bottom
-    2. Configure the parameters of the module at *Configuration » Content
+    1. Navigate to *Manage » Extend*. Check the *Enabled* box next to the
+       module and then select the *Install* button at the bottom
+    2. Configure the parameters of the module at *Manage » Configuration » Content
        authoring*:
        - SuperSaaS account name - This is the name of your SuperSaaS account
          (not your email address)
@@ -64,9 +64,8 @@ CONFIGURATION
        - Custom Domain Name - If you created a custom domain name to point to
          your schedule, then you can enter it here to correctly point your users
          to it.
-    3. Navigate to *Structure » Blocks*. Drag the SuperSaaS Login block to an
-       appropriate location on the page. You can click configure to further
-       customize the title and the pages on which the button should display.
+    3. Navigate to *Manage » Structure » Block layout*. And click 'Place block' 
+       to place the block at a specific place.  
     4. On your SuperSaaS dashboard navigate to the *Access Control* page and
        make the following changes:
        - Select the *Log in and registration managed on your site* option.

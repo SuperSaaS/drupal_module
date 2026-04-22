@@ -21,8 +21,8 @@
 
       submit.onclick = function () {
         for (var i in reservedWords) {
-          if (reservedWords[i] === settings.username) {
-            return window.confirm(settings.confirmMessage);
+          if (reservedWords[i] === settings.supersaas.username) {
+            return window.confirm(settings.supersaas.confirmMessage);
           }
         }
       };

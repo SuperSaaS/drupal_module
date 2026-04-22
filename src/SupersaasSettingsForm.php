@@ -4,6 +4,7 @@ namespace Drupal\supersaas;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Config\TypedConfigManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -17,9 +18,11 @@ class SupersaasSettingsForm extends ConfigFormBase {
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The factory for configuration objects.
+   * @param \Drupal\Core\Config\TypedConfigManagerInterface $typedConfigManager
+   *   The typed config manager.
    */
-  public function __construct(ConfigFactoryInterface $config_factory) {
-    parent::__construct($config_factory);
+  public function __construct(ConfigFactoryInterface $config_factory, TypedConfigManagerInterface $typedConfigManager) {
+    parent::__construct($config_factory, $typedConfigManager);
   }
 
   /**
@@ -27,7 +30,8 @@ class SupersaasSettingsForm extends ConfigFormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('config.factory')
+      $container->get('config.factory'),
+      $container->get('config.typed')
     );
   }
 
@@ -54,59 +58,59 @@ class SupersaasSettingsForm extends ConfigFormBase {
     $form = parent::buildForm($form, $form_state);
     $config = $this->config('supersaas.settings');
 
-    $form['account_id'] = array(
+    $form['account_id'] = [
       '#type' => 'textfield',
       '#title' => $this->t('SuperSaaS Account Name'),
-      '#default_value' => $config->get('account_id', ''),
+      '#default_value' => $config->get('account_id'),
       '#description' => $this->t("The account name of your SuperSaaS account. If you don't have an account name yet then please create one at supersaas.com."),
       '#required' => TRUE,
-    );
+    ];
 
-    $form['password'] = array(
+    $form['password'] = [
       '#type' => 'password',
       '#title' => $this->t('SuperSaaS API key'),
-      '#default_value' => $config->get('password', ''),
+      '#default_value' => $config->get('password'),
       '#description' => $this->t('The API key for your SuperSaaS account.'),
       '#required' => TRUE,
-    );
+    ];
 
-    $form['schedule'] = array(
+    $form['schedule'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Schedule Name'),
-      '#default_value' => $config->get('schedule', ''),
+      '#default_value' => $config->get('schedule'),
       '#description' => $this->t('The name of the schedule or URL to redirect to after login.'),
       '#required' => FALSE,
-    );
+    ];
 
-    $form['button_label'] = array(
+    $form['button_label'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Button Label'),
-      '#default_value' => $config->get('button_label', $this->t('Book Now!')),
+      '#default_value' => $config->get('button_label'),
       '#description' => $this->t("The text to be put on the button that is displayed, for example 'Create Appointment'."),
       '#required' => FALSE,
-    );
+    ];
 
-    $form['button_image'] = array(
+    $form['button_image'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Button Image'),
-      '#default_value' => $config->get('button_image', ''),
+      '#default_value' => $config->get('button_image'),
       '#description' => $this->t('Location of an image file to use as the button. Can be left blank.'),
       '#required' => FALSE,
-    );
+    ];
 
-    $form['domain'] = array(
+    $form['domain'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Custom Domain Name'),
-      '#default_value' => $config->get('domain', ''),
+      '#default_value' => $config->get('domain'),
       '#description' => $this->t('If you created a custom domain name that points to SuperSaaS enter it here. Can be left blank.'),
       '#required' => FALSE,
-    );
+    ];
 
-    $form['https'] = array(
+    $form['https'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Enable HTTPS'),
       '#default_value' => $config->get('https'),
-    );
+    ];
 
     return $form;
   }
