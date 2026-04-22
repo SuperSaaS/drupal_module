@@ -1,3 +1,9 @@
+Drupal 11, 2026-04-22
+------------------------
+- Support for Drupal 11
+- Module works in Drupal 10.2 and 11
+- 
+
 Drupal 10, 2023-05-02
 ------------------------
 - Initial Support for Drupal 10
